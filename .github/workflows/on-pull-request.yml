@@ -1,0 +1,24 @@
+name: Test/ Code analysis on Pull Requests
+
+on:
+  pull_request:
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: src/
+
+jobs:
+  analysis:
+    name: Run Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Install npm packages
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Run eslint
+        run: yarn lint
