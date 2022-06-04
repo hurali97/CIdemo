@@ -28,7 +28,7 @@ jobs:
             ${{ runner.os }}-yarn-
       
       - if: steps.yarn-cache.outputs.cache-hit == 'false'
-          name: Install yarn packages 
+          name: Update dependencies 
           continue-on-error: true
           run: yarn
 
