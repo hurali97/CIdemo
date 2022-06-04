@@ -14,7 +14,22 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - name: Install npm packages
-        run: yarn install --immutable --immutable-cache --check-cache
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache yarn
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-pkg-manager-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-pkg-manager-
+      
+      - if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
+        name: Update dependencies 
+        run: yarn
+
       - name: Run eslint
         run: yarn lint
