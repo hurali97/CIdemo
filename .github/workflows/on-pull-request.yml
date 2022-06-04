@@ -28,8 +28,12 @@ jobs:
           restore-keys: ${{ runner.os }}-yarn-pkg-manager-
       
       - if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
-        name: Update dependencies 
+        name: Update dependencies
         run: yarn
+
+      - if: ${{ steps.yarn-cache.outputs.cache-hit == 'true' }}
+        name: Update dependencies from local cache
+        run: yarn --prefer-offline
 
       - name: Run eslint
         run: yarn lint
