@@ -27,8 +27,8 @@ jobs:
           restore-keys: | 
             ${{ runner.os }}-yarn-
       
-      - name: Update dependencies 
-          if: steps.yarn-cache.outputs.cache-hit == 'false'
+      - if: steps.yarn-cache.outputs.cache-hit != 'true'
+          name: Update dependencies 
           continue-on-error: true
           run: yarn
 
