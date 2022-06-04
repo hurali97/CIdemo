@@ -29,7 +29,7 @@ jobs:
       
       - if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
         name: Update dependencies 
-          run: yarn
+        run: yarn
 
       - name: Run eslint
           run: yarn lint
