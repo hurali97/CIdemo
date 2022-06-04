@@ -55,7 +55,7 @@ const App = () => {
                     <Section title="See Your Changes">
                         <ReloadInstructions />
                     </Section>
-                    <Section title="Debug">
+                    <Section title="Debug App">
                         <DebugInstructions />
                     </Section>
                     <LearnMoreLinks />
