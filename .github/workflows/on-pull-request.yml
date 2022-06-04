@@ -26,9 +26,8 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           # restore-keys: ${{ runner.os }}-yarn-
       
-      - if: steps.yarn-cache.outputs.cache-hit != 'true'
-          # name: Update dependencies 
-          # continue-on-error: true
+      - name: Update dependencies 
+          if: steps.yarn-cache.outputs.cache-hit != 'true'
           run: yarn
 
       - name: Run eslint
