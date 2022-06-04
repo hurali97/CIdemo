@@ -27,7 +27,7 @@ jobs:
           restore-keys: ${{ runner.os }}-yarn-
       
       - name: Install yarn packages 
-          if: steps.yarn-cache.outputs.cache-hit == 'false'
+          # if: steps.yarn-cache.outputs.cache-hit == 'false'
           run: yarn
 
       - name: Run eslint
