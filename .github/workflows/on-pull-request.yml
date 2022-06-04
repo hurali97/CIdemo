@@ -24,12 +24,12 @@ jobs:
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
+          key: ${{ runner.os }}-yarn-pkg-manager-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-pkg-manager-
       
-      - name: Update dependencies 
-          if: steps.yarn-cache.outputs.cache-hit != 'true'
-          run: yarn
+      - if: ${{ steps.yarn-cache.outputs.cache-hit != 'true' }}
+        name: Update dependencies 
+        run: yarn
 
       - name: Run eslint
           run: yarn lint
