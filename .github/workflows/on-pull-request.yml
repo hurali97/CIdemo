@@ -27,10 +27,10 @@ jobs:
           restore-keys: | 
             ${{ runner.os }}-yarn-
       
-      - if: steps.yarn-cache.outputs.cache-hit == 'false'
-          name: Install yarn packages 
-          continue-on-error: true
-          run: yarn
+      # - if: steps.yarn-cache.outputs.cache-hit == 'false'
+      #     name: Install yarn packages 
+      #     continue-on-error: true
+      #     run: yarn
 
       - name: Run eslint
           run: yarn lint
