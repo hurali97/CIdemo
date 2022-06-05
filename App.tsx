@@ -47,7 +47,7 @@ const App = () => {
             />
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <Header />
-                <View>
+                <View testID="MyUniqueId123">
                     <Section title="Step One">
                         Edit <Text style={styles.highlight}>App.tsx</Text> to
                         change this screen and then come back to see your edits.
