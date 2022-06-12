@@ -1,8 +1,5 @@
-const detox = require('detox');
-
 describe('CIdemo', () => {
     beforeAll(async () => {
-        // await detox.init();
         await device.launchApp();
     });
 
