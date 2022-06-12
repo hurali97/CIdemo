@@ -1,3 +1,5 @@
+import { expect } from 'detox';
+
 describe('CIdemo', () => {
     beforeAll(async () => {
         await device.launchApp();
