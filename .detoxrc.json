@@ -3,9 +3,15 @@
   "runnerConfig": "e2e/config.json",
   "skipLegacyWorkersInjection": true,
   "apps": {
-    "ios": {
+    "ios.release": {
       "type": "ios.app",
-      "binaryPath": "SPECIFY_PATH_TO_YOUR_APP_BINARY"
+      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/CIdemo.app",
+      "build": "export RCT_NO_LAUNCH_PACKAGER=true && xcodebuild -workspace ios/CIdemo.xcworkspace -UseNewBuildSystem=NO -scheme CIdemo -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -quiet"
+    },
+    "ios.debug": {
+      "type": "ios.app",
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/CIdemo.app",
+      "build": "xcodebuild -workspace ios/CIdemo.xcworkspace -UseNewBuildSystem=NO -scheme CIdemo -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
     },
     "android.debug": {
       "type": "android.apk",
@@ -28,14 +34,18 @@
     "emulator": {
       "type": "android.emulator",
       "device": {
-        "avdName": "Pixel-4-and-11"
+        "avdName": "detox-pixel-4"
       }
     }
   },
   "configurations": {
-    "ios": {
+    "ios.sim.release": {
       "device": "simulator",
-      "app": "ios"
+      "app": "ios.release"
+    },
+    "ios.sim.debug": {
+      "device": "simulator",
+      "app": "ios.debug"
     },
     "android.emu.debug": {
       "device": "emulator",
