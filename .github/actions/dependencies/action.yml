@@ -2,7 +2,7 @@ name: Reusable action for dependencies installation
 
 runs:
   using: "composite"
-    steps:
+  steps:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
