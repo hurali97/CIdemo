@@ -8,7 +8,7 @@ on:
 jobs:
   analysis:
     name: Run Static Analysis
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -37,3 +37,22 @@ jobs:
 
       - name: Run eslint
         run: yarn lint
+
+  e2e:
+    name: Run e2e
+    needs: analysis
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Setup detox environment
+        run: |
+        brew tap wix/brew
+        brew install applesimutils
+        npm i -g detox-cli
+
+      - name: trigger the e2e build & test
+        run: yarn detox:e2e-ios-ci
