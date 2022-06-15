@@ -1,5 +1,7 @@
 package com.cidemo;
 
+import android.util.Log;
+
 import com.wix.detox.Detox;
 import com.wix.detox.config.DetoxConfig;
 
@@ -20,10 +22,10 @@ public class DetoxTest {
     @Test
     public void runDetoxTests() {
         DetoxConfig detoxConfig = new DetoxConfig();
-        detoxConfig.idlePolicyConfig.masterTimeoutSec = 90;
-        detoxConfig.idlePolicyConfig.idleResourceTimeoutSec = 60;
-        detoxConfig.rnContextLoadTimeoutSec = (BuildConfig.DEBUG ? 180 : 60);
-
+        detoxConfig.idlePolicyConfig.masterTimeoutSec = 120;
+        detoxConfig.idlePolicyConfig.idleResourceTimeoutSec = 120;
+        detoxConfig.rnContextLoadTimeoutSec = (BuildConfig.DEBUG ? 180 : 120);
+        Log.d("DetoxTest", "runDetoxTests: ");
         Detox.runTests(mActivityRule, detoxConfig);
     }
 }

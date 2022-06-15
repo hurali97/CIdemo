@@ -15,12 +15,13 @@ const HomeScreen = (): ReactElement => {
         <View style={styles.container}>
             <Text>Welcome to CI Demo</Text>
             <TextInput
+                testID="nameInput"
                 value={name}
                 placeholder="Enter your name"
                 onChangeText={setName}
                 style={styles.input}
             />
-            <Button title="Click Me" onPress={onClick} />
+            <Button testID="clickMe" title="Click Me" onPress={onClick} />
         </View>
     );
 };

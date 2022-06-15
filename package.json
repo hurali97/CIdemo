@@ -9,9 +9,11 @@
     "test": "jest",
     "lint": "eslint . --ext .ts,.tsx",
     "detox:build-android": "detox build --configuration android.emu.debug",
-    "detox:test-android": "detox test --configuration android.emu.debug",
+    "detox:test-android": "detox test --configuration android.emu.debug --reuse",
     "detox:build-ios": "detox build --configuration ios.sim.debug",
-    "detox:test-ios": "detox test --configuration ios.sim.debug --reuse"
+    "detox:test-ios": "detox test --configuration ios.sim.debug --reuse",
+    "detox:e2e-ios": "yarn detox:build-ios && yarn detox:test-ios",
+    "detox:e2e-android": "yarn detox:build-android && yarn detox:test-android"
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.10",
