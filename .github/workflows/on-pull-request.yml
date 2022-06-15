@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/dependencies/action
+      - uses: ./.github/actions/dependencies
 
       - name: Run eslint
         run: yarn lint
@@ -22,7 +22,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/dependencies/action
+      - uses: ./.github/actions/dependencies
 
       - name: Setup detox environment
         run: brew tap wix/brew && brew install applesimutils && npm i -g detox-cli
