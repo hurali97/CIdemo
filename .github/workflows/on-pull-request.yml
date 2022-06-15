@@ -10,6 +10,7 @@ jobs:
     name: Run Static Analysis
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: .github/actions/dependencies
 
       - name: Run eslint
@@ -20,6 +21,7 @@ jobs:
     needs: analysis
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: .github/actions/dependencies
 
       - name: Setup detox environment
