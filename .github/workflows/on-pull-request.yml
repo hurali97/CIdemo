@@ -49,10 +49,7 @@ jobs:
           node-version: "14"
 
       - name: Setup detox environment
-        run: |
-        brew tap wix/brew
-        brew install applesimutils
-        npm i -g detox-cli
+        run: brew tap wix/brew && brew install applesimutils && npm i -g detox-cli
 
       - name: trigger the e2e build & test
         run: yarn detox:e2e-ios-ci
