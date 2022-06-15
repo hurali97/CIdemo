@@ -10,7 +10,7 @@ jobs:
     name: Run Static Analysis
     runs-on: macos-latest
     steps:
-      - uses: ./.github/actions/dependencies
+      - uses: ./.github/actions/dependencies/action
 
       - name: Run eslint
         run: yarn lint
@@ -20,7 +20,7 @@ jobs:
     needs: analysis
     runs-on: macos-latest
     steps:
-      - uses: ./.github/actions/dependencies
+      - uses: ./.github/actions/dependencies/action
 
       - name: Setup detox environment
         run: brew tap wix/brew && brew install applesimutils && npm i -g detox-cli
