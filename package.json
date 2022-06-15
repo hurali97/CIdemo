@@ -13,7 +13,8 @@
     "detox:build-ios": "detox build --configuration ios.sim.debug",
     "detox:test-ios": "detox test --configuration ios.sim.debug --reuse",
     "detox:e2e-ios": "yarn detox:build-ios && yarn detox:test-ios",
-    "detox:e2e-android": "yarn detox:build-android && yarn detox:test-android"
+    "detox:e2e-android": "yarn detox:build-android && yarn detox:test-android",
+    "detox:e2e-ios-ci": "detox build --configuration ios.sim.release && detox test --configuration ios.sim.release --cleanup"
   },
   "dependencies": {
     "@react-navigation/native": "^6.0.10",
