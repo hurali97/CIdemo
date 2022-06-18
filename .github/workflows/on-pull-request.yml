@@ -28,7 +28,7 @@ jobs:
         run: brew tap wix/brew && brew install applesimutils && npm i -g detox-cli
       
       - uses: actions/cache@v2
-        - name: Cache config for ios Pods
+        name: Cache config for ios Pods
         id: ios-cache
         with:
           path: /Users/runner/work/CIdemo/CIdemo/ios/Pods
@@ -36,7 +36,7 @@ jobs:
           restore-keys: ${{ runner.os }}-ios-support-files-
 
       - uses: actions/cache@v2
-        - name: Cache config for ios build/Build folder
+        name: Cache config for ios build/Build folder
         id: ios-build-cache
         with:
           path: /Users/runner/work/CIdemo/CIdemo/ios/build/Build
