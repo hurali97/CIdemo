@@ -27,11 +27,17 @@ jobs:
       - name: Setup detox environment
         run: brew tap wix/brew && brew install applesimutils && npm i -g detox-cli
 
-      - name: Setup Pod check
-        run: gem install cocoapods-check
+      - uses: actions/cache@v3
+        id: pod-cache
+        with:
+          path: Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
 
       - name: Setup pods
-        run: cd ios && pod check || pod install && cd .. 
+        if: steps.pod-cache.outputs.cache-hit != 'true'
+        run: cd ios && pod install && cd .. 
 
       - name: trigger the e2e build & test
         run: yarn detox:e2e-ios-ci
