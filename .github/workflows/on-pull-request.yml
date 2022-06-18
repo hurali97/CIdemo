@@ -27,8 +27,11 @@ jobs:
       - name: Setup detox environment
         run: brew tap wix/brew && brew install applesimutils && npm i -g detox-cli
 
+      - name: Setup Pod check
+        run: gem install cocoapods-check
+
       - name: Setup pods
-        run: cd ios && pod install && cd .. 
+        run: cd ios && pod check || pod install && cd .. 
 
       - name: trigger the e2e build & test
         run: yarn detox:e2e-ios-ci
