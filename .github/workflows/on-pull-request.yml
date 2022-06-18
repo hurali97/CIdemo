@@ -26,15 +26,16 @@ jobs:
 
       - name: Setup detox environment
         run: brew tap wix/brew && brew install applesimutils && npm i -g detox-cli
-
+      
       - uses: actions/cache@v2
-        id: pod-cache
+        id: ios-cache
         with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-          restore-keys: ${{ runner.os }}-pods-
+          path: /Users/runner/work/CIdemo/CIdemo/ios/Pods
+          key: ${{ runner.os }}-ios-support-files-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: ${{ runner.os }}-ios-support-files-
 
       - name: Setup pods
+        if: steps.ios-cache.outputs.cache-hit != 'true'
         run: cd ios && pod install && cd .. 
 
       - name: trigger the e2e build & test
