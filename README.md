@@ -8,3 +8,4 @@ This repository has the examples on integration of the following github actions:
 - It also has a job for e2e tests, which is dependent on the analysis job.
 - A custom action to install the yarn dependencies, checking the cache is also implemented in the .github/actions folder.
 - Option to merge is disabled until the status checks are passed.
+- The both jobs took around 28 mins atleast to cover, we reduced it to almost 14 mins, by caching the Pods and the build dir.
