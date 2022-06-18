@@ -35,7 +35,6 @@ jobs:
           restore-keys: ${{ runner.os }}-ios-support-files-
 
       - name: Setup pods
-        if: steps.ios-cache.outputs.cache-hit != 'true'
         run: cd ios && pod install && cd .. 
 
       - name: trigger the e2e build & test
